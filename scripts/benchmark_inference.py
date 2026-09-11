@@ -4,7 +4,10 @@ import csv
 import json
 import time
 import joblib
-import psutil
+try:
+    import psutil
+except ImportError:
+    psutil = None
 import numpy as np
 from typing import Dict, Any, List, Tuple, Optional
 
@@ -52,13 +55,20 @@ class AIInferenceBenchmarker:
             return report
 
         # Measure initial process memory
-        process = psutil.Process(os.getpid())
-        mem_before = process.memory_info().rss / (1024.0 * 1024.0)
+        if psutil:
+            process = psutil.Process(os.getpid())
+            mem_before = process.memory_info().rss / (1024.0 * 1024.0)
+        else:
+            mem_before = 0.0
 
         # Load model and measure size
         clf = joblib.load(self.model_path)
         model_size_mb = os.path.getsize(self.model_path) / (1024.0 * 1024.0)
-        mem_after = process.memory_info().rss / (1024.0 * 1024.0)
+        
+        if psutil:
+            mem_after = process.memory_info().rss / (1024.0 * 1024.0)
+        else:
+            mem_after = mem_before
 
         report["model_size_mb"] = round(model_size_mb, 2)
         report["memory_usage_mb"] = round(max(0.0, mem_after - mem_before), 2)
