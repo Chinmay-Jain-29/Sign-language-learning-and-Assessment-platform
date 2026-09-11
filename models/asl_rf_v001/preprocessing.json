@@ -1,9 +1,9 @@
 {
-  "preprocessing_version": "v1.0.0",
+  "method": "wrist_relative_max_euclidean_distance",
   "origin_landmark_index": 0,
-  "scaling_method": "max_euclidean_distance",
-  "min_scale_epsilon": 1e-6,
   "input_landmarks_count": 21,
-  "output_feature_dim": 63,
-  "spatial_coordinates": ["x", "y", "z"]
+  "spatial_dimensions": 3,
+  "feature_length": 63,
+  "coordinate_ordering": "XYZ_flattened",
+  "version": "v1.0.0_wrist_maxdist_l2"
 }

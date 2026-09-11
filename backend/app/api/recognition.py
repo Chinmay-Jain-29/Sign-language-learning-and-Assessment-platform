@@ -43,6 +43,10 @@ class RecognitionResponse(BaseModel):
     message: str
     reason: str
     model_version: str
+    model_hash: Optional[str] = None
+    feature_dimension: Optional[int] = 63
+    preprocessing_version: Optional[str] = None
+    class_mapping_version: Optional[str] = None
     inference_time_ms: float
     is_valid_hand: bool
 
@@ -173,6 +177,10 @@ def predict_landmarks_endpoint(
         message=assessment["message"],
         reason=f"Sign '{active_pred}' recognized with {conf*100:.1f}% confidence.",
         model_version=ai_pipeline.model_version,
+        model_hash=ai_pipeline.model_hash_sha256,
+        feature_dimension=63,
+        preprocessing_version=ai_pipeline.preprocessing_version,
+        class_mapping_version=ai_pipeline.class_mapping_version,
         inference_time_ms=elapsed_ms,
         is_valid_hand=True
     )
@@ -208,6 +216,10 @@ def predict_frame_endpoint(
             message="Invalid image buffer.",
             reason=f"Image decoding failed: {e}",
             model_version=ai_pipeline.model_version,
+            model_hash=ai_pipeline.model_hash_sha256,
+            feature_dimension=63,
+            preprocessing_version=ai_pipeline.preprocessing_version,
+            class_mapping_version=ai_pipeline.class_mapping_version,
             inference_time_ms=round((time.time() - t0) * 1000.0, 2),
             is_valid_hand=False
         )
@@ -239,6 +251,10 @@ def predict_frame_endpoint(
         message=assessment["message"],
         reason=res.reason,
         model_version=res.model_version,
+        model_hash=res.model_hash,
+        feature_dimension=63,
+        preprocessing_version=ai_pipeline.preprocessing_version,
+        class_mapping_version=ai_pipeline.class_mapping_version,
         inference_time_ms=elapsed_ms,
         is_valid_hand=res.landmarks_valid
     )

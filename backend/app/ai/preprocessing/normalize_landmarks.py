@@ -1,5 +1,5 @@
 import numpy as np
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, Any
 from app.ai.hand_tracking.schemas import LandmarkPoint
 
 class LandmarkNormalizer:
@@ -62,11 +62,25 @@ class LandmarkNormalizer:
         """
         return LandmarkNormalizer.normalize_array(flat_coords)
 
-    def normalize(self, flat_coords: Union[List[float], np.ndarray]) -> np.ndarray:
+    def normalize(self, raw_input: Union[List[Any], np.ndarray]) -> np.ndarray:
         """
-        Normalizes a 63-element flattened array. Compatible with standalone scripts.
+        Normalizes 21 3D spatial landmarks from dicts, LandmarkPoints, or 63-element float array.
+        Returns a 1D (63,) numpy float32 array zero-centered on wrist and scaled by maximum span.
         """
-        return self.normalize_array(np.array(flat_coords, dtype=np.float32))
+        if isinstance(raw_input, (list, tuple)):
+            if len(raw_input) == 21 and isinstance(raw_input[0], dict):
+                flat = []
+                for pt in raw_input:
+                    flat.extend([pt.get('x', 0.0), pt.get('y', 0.0), pt.get('z', 0.0)])
+                return self.normalize_array(np.array(flat, dtype=np.float32))
+            elif len(raw_input) == 21 and hasattr(raw_input[0], 'x'):
+                flat = []
+                for pt in raw_input:
+                    flat.extend([pt.x, pt.y, pt.z])
+                return self.normalize_array(np.array(flat, dtype=np.float32))
+            elif len(raw_input) == 63:
+                return self.normalize_array(np.array(raw_input, dtype=np.float32))
+        return self.normalize_array(np.array(raw_input, dtype=np.float32))
 
     @staticmethod
     def normalize_array(flat_coords: np.ndarray) -> np.ndarray:

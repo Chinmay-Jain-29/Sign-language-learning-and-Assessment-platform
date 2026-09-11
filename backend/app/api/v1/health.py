@@ -24,3 +24,14 @@ def health_check(db: Session = Depends(get_db)):
         "ai_model_loaded": True
     }
     return success_response(data=data, message="System health check successful")
+
+@router.get("/health/ml")
+def ml_health_check():
+    """
+    Diagnostic ML Health Check Endpoint:
+    Returns non-sensitive metadata verifying model status, SHA256 checksum,
+    supported classes, feature dimensions, and preprocessing version.
+    """
+    from app.ai.pipeline import ai_pipeline
+    meta = ai_pipeline.get_model_metadata()
+    return success_response(data=meta, message="ML subsystem health and parity metadata retrieved successfully")

@@ -136,7 +136,8 @@ models/*.joblib
 !models/asl_rf_v001/metadata.json
 !models/asl_rf_v001/preprocessing.json
 !models/asl_rf_v001/.gitkeep
-models/asl_rf_v001/model.joblib
+!models/asl_rf_v001/model.joblib
+!backend/app/ai/ml/models/gesture_model.joblib
 
 # ------------------------------------------------------------------------------
 # 8. Logs & Temporary Files

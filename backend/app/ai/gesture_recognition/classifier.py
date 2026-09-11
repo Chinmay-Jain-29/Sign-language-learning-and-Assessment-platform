@@ -11,15 +11,15 @@ class GestureClassifier:
         self._load_model()
         
     def _load_model(self):
-        if not os.path.exists(MODEL_PATH):
-            print("Gesture model not found. Training model now...")
-            self.model = train_and_save_model()
-        else:
+        from app.ai.pipeline import ai_pipeline
+        if ai_pipeline.model is not None:
+            self.model = ai_pipeline.model
+        elif os.path.exists(MODEL_PATH):
             try:
                 self.model = joblib.load(MODEL_PATH)
             except Exception as e:
-                print(f"Failed to load model: {e}. Retraining...")
-                self.model = train_and_save_model()
+                print(f"Failed to load model: {e}")
+                self.model = None
 
     def predict(self, raw_landmarks: List[Dict[str, float]]) -> Tuple[str, float]:
         """
