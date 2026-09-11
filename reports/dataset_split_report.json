@@ -1,0 +1,169 @@
+{
+  "input_csv": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\datasets\\landmarks_normalized.csv",
+  "total_samples": 56929,
+  "train_count": 39848,
+  "val_count": 8538,
+  "test_count": 8543,
+  "train_ratio_achieved": 70.0,
+  "val_ratio_achieved": 15.0,
+  "test_ratio_achieved": 15.01,
+  "class_distribution": {
+    "A": {
+      "total": 2085,
+      "train": 1460,
+      "val": 313,
+      "test": 312
+    },
+    "B": {
+      "total": 2150,
+      "train": 1505,
+      "val": 322,
+      "test": 323
+    },
+    "C": {
+      "total": 1769,
+      "train": 1238,
+      "val": 265,
+      "test": 266
+    },
+    "D": {
+      "total": 2296,
+      "train": 1607,
+      "val": 344,
+      "test": 345
+    },
+    "E": {
+      "total": 2202,
+      "train": 1541,
+      "val": 330,
+      "test": 331
+    },
+    "F": {
+      "total": 2756,
+      "train": 1929,
+      "val": 413,
+      "test": 414
+    },
+    "G": {
+      "total": 2290,
+      "train": 1603,
+      "val": 344,
+      "test": 343
+    },
+    "H": {
+      "total": 2281,
+      "train": 1597,
+      "val": 342,
+      "test": 342
+    },
+    "I": {
+      "total": 2263,
+      "train": 1584,
+      "val": 339,
+      "test": 340
+    },
+    "J": {
+      "total": 2430,
+      "train": 1701,
+      "val": 364,
+      "test": 365
+    },
+    "K": {
+      "total": 2595,
+      "train": 1816,
+      "val": 389,
+      "test": 390
+    },
+    "L": {
+      "total": 2417,
+      "train": 1692,
+      "val": 363,
+      "test": 362
+    },
+    "M": {
+      "total": 1142,
+      "train": 799,
+      "val": 171,
+      "test": 172
+    },
+    "N": {
+      "total": 964,
+      "train": 675,
+      "val": 145,
+      "test": 144
+    },
+    "O": {
+      "total": 2152,
+      "train": 1506,
+      "val": 323,
+      "test": 323
+    },
+    "P": {
+      "total": 1913,
+      "train": 1339,
+      "val": 287,
+      "test": 287
+    },
+    "Q": {
+      "total": 1925,
+      "train": 1348,
+      "val": 289,
+      "test": 288
+    },
+    "R": {
+      "total": 2429,
+      "train": 1700,
+      "val": 364,
+      "test": 365
+    },
+    "S": {
+      "total": 2432,
+      "train": 1702,
+      "val": 365,
+      "test": 365
+    },
+    "T": {
+      "total": 2259,
+      "train": 1581,
+      "val": 339,
+      "test": 339
+    },
+    "U": {
+      "total": 2451,
+      "train": 1716,
+      "val": 368,
+      "test": 367
+    },
+    "V": {
+      "total": 2490,
+      "train": 1743,
+      "val": 374,
+      "test": 373
+    },
+    "W": {
+      "total": 2394,
+      "train": 1676,
+      "val": 359,
+      "test": 359
+    },
+    "X": {
+      "total": 2075,
+      "train": 1452,
+      "val": 311,
+      "test": 312
+    },
+    "Y": {
+      "total": 2522,
+      "train": 1765,
+      "val": 378,
+      "test": 379
+    },
+    "Z": {
+      "total": 2247,
+      "train": 1573,
+      "val": 337,
+      "test": 337
+    }
+  },
+  "seed": 42
+}

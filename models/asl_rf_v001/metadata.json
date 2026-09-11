@@ -1,0 +1,26 @@
+{
+  "model_version": "asl_rf_v001",
+  "dataset_version": "v1.0.0",
+  "feature_version": "v1.0.0",
+  "preprocessing_version": "v1.0.0",
+  "training_date": "2026-08-21T14:00:00Z",
+  "algorithm": "RandomForestClassifier",
+  "hyperparameters": {
+    "n_estimators": 200,
+    "max_depth": 20,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "random_state": 42
+  },
+  "metrics": {
+    "validation_accuracy": 0.9938,
+    "test_accuracy": 0.9936,
+    "precision_macro": 0.9915,
+    "recall_macro": 0.9910,
+    "f1_macro": 0.9912,
+    "p50_latency_ms": 31.11,
+    "fps": 31.9,
+    "model_size_mb": 85.79
+  },
+  "approval_status": "APPROVED_FOR_PRODUCTION"
+}

@@ -1,0 +1,168 @@
+# ==============================================================================
+# Git Ignore Rules — AI Sign Language Learning & Assessment Platform
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+backend/.env.*
+!.env.example
+!backend/.env.example
+
+# ------------------------------------------------------------------------------
+# 2. Python & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ------------------------------------------------------------------------------
+# 3. Node & Frontend
+# ------------------------------------------------------------------------------
+frontend/node_modules/
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# 4. Local Databases & Dumps
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+sign_language.db
+backend/sign_language.db
+
+# ------------------------------------------------------------------------------
+# 5. User Uploads (Runtime Files)
+# ------------------------------------------------------------------------------
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+backend/uploads/avatars/*
+!backend/uploads/avatars/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 6. Heavy Datasets & Raw Extractions (CRITICAL: ZERO RAW DATASETS COMMITTED)
+# ------------------------------------------------------------------------------
+# Ignore all files and subdirectories inside datasets/
+datasets/*
+!datasets/README.md
+!datasets/.gitkeep
+
+# Allow placeholder directories
+!datasets/asl_alphabet/
+!datasets/sign_mnist/
+!datasets/wlasl/
+!datasets/rwth_phoenix/
+!datasets/features/
+
+# Ignore all contents within dataset subdirectories recursively
+datasets/asl_alphabet/**
+!datasets/asl_alphabet/.gitkeep
+
+datasets/sign_mnist/**
+!datasets/sign_mnist/.gitkeep
+
+datasets/wlasl/**
+!datasets/wlasl/.gitkeep
+
+datasets/rwth_phoenix/**
+!datasets/rwth_phoenix/.gitkeep
+
+datasets/features/**
+!datasets/features/.gitkeep
+
+# Specific dataset extensions and temporary folders
+datasets/*.csv
+datasets/*.json
+datasets/*.zip
+datasets/*.tar
+datasets/*.tar.gz
+datasets/*.tgz
+datasets/*.png
+datasets/*.jpg
+datasets/*.jpeg
+datasets/*.mp4
+datasets/*.avi
+datasets/temp_*
+
+# ------------------------------------------------------------------------------
+# 7. Heavy Model Binaries (85MB+ Checkpoints)
+# ------------------------------------------------------------------------------
+models/*.joblib
+!models/README.md
+!models/.gitkeep
+!models/asl_rf_v001/labels.json
+!models/asl_rf_v001/metadata.json
+!models/asl_rf_v001/preprocessing.json
+!models/asl_rf_v001/.gitkeep
+models/asl_rf_v001/model.joblib
+
+# ------------------------------------------------------------------------------
+# 8. Logs & Temporary Files
+# ------------------------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+scratch/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ------------------------------------------------------------------------------
+# 9. IDE & Operating System
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini

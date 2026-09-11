@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: asl_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-asl_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-asl_password}
+      POSTGRES_DB: ${POSTGRES_DB:-asl_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-asl_user} -d $${POSTGRES_DB:-asl_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: asl_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://asl_user:asl_password@postgres:5432/asl_db}
+      - SECRET_KEY=${SECRET_KEY:-local-dev-secret-key-change-in-production}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - MODEL_CONFIDENCE_THRESHOLD=0.75
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: asl_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

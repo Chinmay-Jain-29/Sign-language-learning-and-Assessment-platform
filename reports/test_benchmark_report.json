@@ -1,0 +1,49 @@
+{
+  "test_csv": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\datasets\\test.csv",
+  "model_path": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\models\\randomforest_tuned.joblib",
+  "benchmark_iterations": 20,
+  "model_size_mb": 85.79,
+  "memory_usage_mb": 0.63,
+  "single_sample_latency": {
+    "mean_ms": 41.257,
+    "std_ms": 7.3514,
+    "min_ms": 30.2574,
+    "p50_ms": 46.0927,
+    "p95_ms": 47.3766,
+    "p99_ms": 47.4096,
+    "max_ms": 47.4179
+  },
+  "batch_latencies": {
+    "batch_1": {
+      "total_batch_mean_ms": 57.8795,
+      "per_sample_mean_ms": 57.8795,
+      "p95_ms": 63.5521,
+      "throughput_fps": 17.28
+    },
+    "batch_8": {
+      "total_batch_mean_ms": 61.0772,
+      "per_sample_mean_ms": 7.6346,
+      "p95_ms": 63.9317,
+      "throughput_fps": 130.98
+    },
+    "batch_16": {
+      "total_batch_mean_ms": 63.0413,
+      "per_sample_mean_ms": 3.9401,
+      "p95_ms": 64.8301,
+      "throughput_fps": 253.8
+    },
+    "batch_32": {
+      "total_batch_mean_ms": 77.0709,
+      "per_sample_mean_ms": 2.4085,
+      "p95_ms": 79.9739,
+      "throughput_fps": 415.2
+    },
+    "batch_64": {
+      "total_batch_mean_ms": 76.8431,
+      "per_sample_mean_ms": 1.2007,
+      "p95_ms": 79.8782,
+      "throughput_fps": 832.87
+    }
+  },
+  "fps_throughput": 24.24
+}

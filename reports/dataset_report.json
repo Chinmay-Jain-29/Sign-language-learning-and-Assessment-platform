@@ -1,0 +1,89 @@
+{
+  "base_directory": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\datasets\\asl_alphabet\\asl_alphabet_train\\asl_alphabet_train",
+  "total_classes": 29,
+  "total_samples": 87000,
+  "class_names": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "del",
+    "nothing",
+    "space"
+  ],
+  "samples_per_class": {
+    "A": 3000,
+    "B": 3000,
+    "C": 3000,
+    "D": 3000,
+    "del": 3000,
+    "E": 3000,
+    "F": 3000,
+    "G": 3000,
+    "H": 3000,
+    "I": 3000,
+    "J": 3000,
+    "K": 3000,
+    "L": 3000,
+    "M": 3000,
+    "N": 3000,
+    "nothing": 3000,
+    "O": 3000,
+    "P": 3000,
+    "Q": 3000,
+    "R": 3000,
+    "S": 3000,
+    "space": 3000,
+    "T": 3000,
+    "U": 3000,
+    "V": 3000,
+    "W": 3000,
+    "X": 3000,
+    "Y": 3000,
+    "Z": 3000
+  },
+  "largest_class": {
+    "name": "A",
+    "count": 3000
+  },
+  "smallest_class": {
+    "name": "Z",
+    "count": 3000
+  },
+  "is_balanced": true,
+  "class_balance_ratio": 1.0,
+  "image_dimensions": [
+    "200x200 (RGB)"
+  ],
+  "file_formats": {
+    ".jpg": 87000
+  },
+  "corrupt_images": [],
+  "wlasl_metadata": {
+    "annotation_file": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\datasets\\wlasl\\WLASL_v0.3.json",
+    "unique_signs_count": 2000,
+    "total_video_instances": 21083
+  }
+}

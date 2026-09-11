@@ -1,0 +1,142 @@
+{
+  "input_csv": "D:\\SIGN LANGUAGE LEARNING AND ASSESSNMENT\\datasets\\landmarks.csv",
+  "total_samples": 56931,
+  "valid_samples": 56929,
+  "invalid_samples": 2,
+  "quality_score_percentage": 100.0,
+  "failure_reasons_breakdown": {
+    "y_out_of_bounds": 2
+  },
+  "class_quality": {
+    "A": {
+      "total": 2085,
+      "valid": 2085,
+      "invalid": 0
+    },
+    "B": {
+      "total": 2150,
+      "valid": 2150,
+      "invalid": 0
+    },
+    "C": {
+      "total": 1769,
+      "valid": 1769,
+      "invalid": 0
+    },
+    "D": {
+      "total": 2296,
+      "valid": 2296,
+      "invalid": 0
+    },
+    "E": {
+      "total": 2202,
+      "valid": 2202,
+      "invalid": 0
+    },
+    "F": {
+      "total": 2756,
+      "valid": 2756,
+      "invalid": 0
+    },
+    "G": {
+      "total": 2290,
+      "valid": 2290,
+      "invalid": 0
+    },
+    "H": {
+      "total": 2281,
+      "valid": 2281,
+      "invalid": 0
+    },
+    "I": {
+      "total": 2263,
+      "valid": 2263,
+      "invalid": 0
+    },
+    "J": {
+      "total": 2430,
+      "valid": 2430,
+      "invalid": 0
+    },
+    "K": {
+      "total": 2595,
+      "valid": 2595,
+      "invalid": 0
+    },
+    "L": {
+      "total": 2417,
+      "valid": 2417,
+      "invalid": 0
+    },
+    "M": {
+      "total": 1142,
+      "valid": 1142,
+      "invalid": 0
+    },
+    "N": {
+      "total": 964,
+      "valid": 964,
+      "invalid": 0
+    },
+    "O": {
+      "total": 2152,
+      "valid": 2152,
+      "invalid": 0
+    },
+    "P": {
+      "total": 1913,
+      "valid": 1913,
+      "invalid": 0
+    },
+    "Q": {
+      "total": 1925,
+      "valid": 1925,
+      "invalid": 0
+    },
+    "R": {
+      "total": 2429,
+      "valid": 2429,
+      "invalid": 0
+    },
+    "S": {
+      "total": 2432,
+      "valid": 2432,
+      "invalid": 0
+    },
+    "T": {
+      "total": 2260,
+      "valid": 2259,
+      "invalid": 1
+    },
+    "U": {
+      "total": 2451,
+      "valid": 2451,
+      "invalid": 0
+    },
+    "V": {
+      "total": 2490,
+      "valid": 2490,
+      "invalid": 0
+    },
+    "W": {
+      "total": 2394,
+      "valid": 2394,
+      "invalid": 0
+    },
+    "X": {
+      "total": 2075,
+      "valid": 2075,
+      "invalid": 0
+    },
+    "Y": {
+      "total": 2522,
+      "valid": 2522,
+      "invalid": 0
+    },
+    "Z": {
+      "total": 2248,
+      "valid": 2247,
+      "invalid": 1
+    }
+  }
+}

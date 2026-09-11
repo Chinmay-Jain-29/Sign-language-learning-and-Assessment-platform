@@ -1,0 +1,22 @@
+{
+  "dataset_name": "ASL Alphabet Training Dataset",
+  "dataset_version": "v1.0.0",
+  "feature_version": "v1.0.0",
+  "total_scanned_images": 87000,
+  "total_valid_landmarks_extracted": 56929,
+  "failed_extraction_count": 30071,
+  "number_of_classes": 29,
+  "feature_dimensions": 63,
+  "train_samples_count": 39848,
+  "validation_samples_count": 8538,
+  "test_samples_count": 8543,
+  "samples_per_class": {
+    "A": 2000, "B": 2000, "C": 2000, "D": 2000, "E": 2000,
+    "F": 2000, "G": 2000, "H": 2000, "I": 2000, "J": 1963,
+    "K": 2000, "L": 2000, "M": 1966, "N": 1966, "O": 2000,
+    "P": 2000, "Q": 2000, "R": 2000, "S": 2000, "T": 2000,
+    "U": 2000, "V": 2000, "W": 2000, "X": 2000, "Y": 2000,
+    "Z": 1968, "del": 2000, "nothing": 1100, "space": 2000
+  },
+  "extraction_timestamp": "2026-08-21T14:00:00Z"
+}
