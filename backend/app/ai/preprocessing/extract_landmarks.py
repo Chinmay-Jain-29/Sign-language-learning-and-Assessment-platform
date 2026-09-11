@@ -1,9 +1,17 @@
 import cv2
 import numpy as np
-import mediapipe as mp
+try:
+    import mediapipe as mp
+    if hasattr(mp, "solutions") and hasattr(mp.solutions, "hands"):
+        mp_hands = mp.solutions.hands
+    else:
+        from mediapipe.python.solutions import hands as mp_hands
+except Exception:
+    try:
+        from mediapipe.python.solutions import hands as mp_hands
+    except Exception:
+        mp_hands = None
 from typing import List, Tuple, Optional, Dict, Any
-
-mp_hands = mp.solutions.hands
 
 def normalize_landmarks(raw_landmarks: List[Dict[str, float]]) -> np.ndarray:
     """
@@ -35,6 +43,8 @@ def extract_landmarks_from_image(image_path: str) -> Optional[np.ndarray]:
     """
     Runs MediaPipe Hands on an image path and returns 63-dim normalized landmark array.
     """
+    if mp_hands is None:
+        return None
     img = cv2.imread(image_path)
     if img is None:
         return None

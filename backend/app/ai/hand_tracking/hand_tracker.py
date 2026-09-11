@@ -1,6 +1,21 @@
 import cv2
 import numpy as np
-import mediapipe as mp
+try:
+    import mediapipe as mp
+    if hasattr(mp, "solutions") and hasattr(mp.solutions, "hands"):
+        mp_hands = mp.solutions.hands
+        mp_drawing = mp.solutions.drawing_utils
+        mp_drawing_styles = mp.solutions.drawing_styles
+    else:
+        from mediapipe.python.solutions import hands as mp_hands, drawing_utils as mp_drawing, drawing_styles as mp_drawing_styles
+except Exception:
+    try:
+        from mediapipe.python.solutions import hands as mp_hands, drawing_utils as mp_drawing, drawing_styles as mp_drawing_styles
+    except Exception:
+        mp_hands = None
+        mp_drawing = None
+        mp_drawing_styles = None
+
 from typing import List, Optional
 from app.ai.hand_tracking.schemas import LandmarkPoint, BoundingBox, HandDetectionResult
 
@@ -12,23 +27,26 @@ class HandTracker:
         min_detection_confidence: float = 0.7,
         min_tracking_confidence: float = 0.7
     ):
-        self.mp_hands = mp.solutions.hands
-        self.mp_drawing = mp.solutions.drawing_utils
-        self.mp_drawing_styles = mp.solutions.drawing_styles
+        self.mp_hands = mp_hands
+        self.mp_drawing = mp_drawing
+        self.mp_drawing_styles = mp_drawing_styles
 
-        self.hands = self.mp_hands.Hands(
-            static_image_mode=static_image_mode,
-            max_num_hands=max_num_hands,
-            min_detection_confidence=min_detection_confidence,
-            min_tracking_confidence=min_tracking_confidence
-        )
+        if self.mp_hands is not None:
+            self.hands = self.mp_hands.Hands(
+                static_image_mode=static_image_mode,
+                max_num_hands=max_num_hands,
+                min_detection_confidence=min_detection_confidence,
+                min_tracking_confidence=min_tracking_confidence
+            )
+        else:
+            self.hands = None
 
     def detect(self, image_np: np.ndarray) -> List[HandDetectionResult]:
         """
         Processes a BGR or RGB image NumPy array, detects multi-hand landmarks via MediaPipe,
         and returns structured HandDetectionResult objects with 21 3D landmarks and visibility validation.
         """
-        if image_np is None or image_np.size == 0:
+        if image_np is None or image_np.size == 0 or self.hands is None:
             return []
 
         # Ensure image is RGB format
@@ -124,4 +142,5 @@ class HandTracker:
         return annotated
 
     def close(self):
-        self.hands.close()
+        if self.hands:
+            self.hands.close()
