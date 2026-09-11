@@ -122,3 +122,7 @@ def root():
             "health": f"{settings.API_V1_STR}/health"
         }
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=(settings.ENVIRONMENT == "development"))

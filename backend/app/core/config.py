@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000", "http://localhost"]
 
+    # Server Network / Port Configuration
+    HOST: str = os.getenv("HOST", "0.0.0.0")
+    PORT: int = int(os.getenv("PORT", "10000"))
+
     model_config = SettingsConfigDict(case_sensitive=True, env_file=".env", extra="ignore")
 
 settings = Settings()
