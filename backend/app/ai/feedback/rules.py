@@ -8,8 +8,12 @@ class BaseFeedbackRule:
 
 class ConfidenceThresholdRule(BaseFeedbackRule):
     def evaluate(self, landmarks_63: List[float], expected_sign: str, predicted_sign: str, confidence: float, invalid_frames: int) -> Optional[str]:
-        if confidence < 0.75:
-            return "Your confidence is too low; repeat the gesture with firm finger posture."
+        if confidence < 0.70:
+            pred = predicted_sign.upper() if predicted_sign and predicted_sign not in ["NONE", "NO_HAND", "UNCERTAIN"] else None
+            conf_pct = round(confidence * 100)
+            if pred:
+                return f"Unable to confidently identify the performed sign. The model currently detects {pred} with {conf_pct}% confidence. Please position your hand clearly and try again."
+            return f"Unable to confidently identify the performed sign ({conf_pct}% confidence). Please position your hand clearly and try again."
         return None
 
 class WristPositionRule(BaseFeedbackRule):

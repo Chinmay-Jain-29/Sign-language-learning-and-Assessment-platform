@@ -243,7 +243,7 @@ export const Practice = () => {
         setDetectionConfidence(conf);
         setIsSignCorrect(correct);
         setWebcamState(correct ? WEBCAM_STATES.STABLE_PREDICTION : WEBCAM_STATES.PREDICTION);
-        setFeedbackMessage(data.message || (correct ? `Correct! You performed sign ${currentTarget}.` : `Detected sign ${pred}. Please perform sign ${currentTarget}.`));
+        setFeedbackMessage(data.message || (correct ? `Correct. The model detected ${pred}, which matches the expected ${currentTarget} sign.` : `Incorrect. The model detected ${pred}, while the expected sign was ${currentTarget}. Please try the ${currentTarget} sign again.`));
 
         drawHandSkeleton(landmarks21, correct);
       }
@@ -321,7 +321,7 @@ export const Practice = () => {
         setDetectionConfidence(conf);
         setIsSignCorrect(correct);
         setWebcamState(correct ? WEBCAM_STATES.STABLE_PREDICTION : WEBCAM_STATES.PREDICTION);
-        setFeedbackMessage(data.message || (correct ? `Correct! You performed sign ${currentTarget}.` : `Detected sign ${pred}. Please perform sign ${currentTarget}.`));
+        setFeedbackMessage(data.message || (correct ? `Correct. The model detected ${pred}, which matches the expected ${currentTarget} sign.` : `Incorrect. The model detected ${pred}, while the expected sign was ${currentTarget}. Please try the ${currentTarget} sign again.`));
       }
     } catch (err) {
       console.error("Frame prediction error:", err);
@@ -443,8 +443,8 @@ export const Practice = () => {
     const isCorr = isSignCorrect === true || (predSign.toUpperCase() === currentTarget.toUpperCase());
     const accVal = isCorr ? 100.0 : 0.0;
     const feedbackStr = isCorr 
-      ? `Correct! You performed sign ${currentTarget}.` 
-      : `Detected sign ${predSign}. Please perform sign ${currentTarget}.`;
+      ? `Correct. The model detected ${predSign}, which matches the expected ${currentTarget} sign.` 
+      : `Incorrect. The model detected ${predSign}, while the expected sign was ${currentTarget}. Please try the ${currentTarget} sign again.`;
 
     const newAttempts = attemptCount + 1;
     const newCorrect = isCorr ? correctAttempts + 1 : correctAttempts;

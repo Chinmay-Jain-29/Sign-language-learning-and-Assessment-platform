@@ -1,10 +1,12 @@
 {
-  "model_name": "RandomForestClassifier",
-  "model_version": "asl_rf_v001",
-  "model_hash_sha256": "234eec20f3f23a7111be63e86bde0285e4163864703d71bfe2cd89e0a6994f1d",
-  "model_hash_md5": "f9efb49835b1567c98aa77fcf37b07fd",
-  "model_size_bytes": 2456505,
-  "num_classes": 26,
+  "model_name": "asl_rf_v001",
+  "model_type": "RandomForestClassifier",
+  "architecture": "RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)",
+  "version": "v1.0.0",
+  "sha256": "f7902ff3a1ed7fd7dc77e4d822da1d80f4f0f72a85aa482f4e4cbfc1e13c6711",
+  "feature_dimension": 63,
+  "landmark_count": 21,
+  "classes_count": 26,
   "classes": [
     "A",
     "B",
@@ -33,8 +35,12 @@
     "Y",
     "Z"
   ],
-  "n_features": 63,
-  "n_estimators": 100,
-  "preprocessing_version": "v1.0.0_wrist_maxdist_l2",
-  "class_mapping_version": "v1.0.0_canonical_26"
+  "accuracy": 0.9937,
+  "macro_f1": 0.9913,
+  "weighted_f1": 0.9937,
+  "training_samples": 39848,
+  "validation_samples": 8538,
+  "preprocessing": "wrist_origin_euclidean_max_normalized",
+  "inference_framework": "scikit-learn",
+  "model_size_bytes": 45426585
 }

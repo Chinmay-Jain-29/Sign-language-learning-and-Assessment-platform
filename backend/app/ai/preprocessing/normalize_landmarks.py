@@ -55,13 +55,6 @@ class LandmarkNormalizer:
 
         return normalized_points
 
-    @staticmethod
-    def normalize_array(flat_coords: np.ndarray) -> np.ndarray:
-        """
-        Normalizes a 1D (63,) or 2D (N, 63) NumPy array of landmarks.
-        """
-        return LandmarkNormalizer.normalize_array(flat_coords)
-
     def normalize(self, raw_input: Union[List[Any], np.ndarray]) -> np.ndarray:
         """
         Normalizes 21 3D spatial landmarks from dicts, LandmarkPoints, or 63-element float array.

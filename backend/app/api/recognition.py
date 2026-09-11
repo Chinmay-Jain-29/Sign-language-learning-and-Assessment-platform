@@ -66,10 +66,15 @@ def compute_generic_assessment(target_sign: Optional[str], predicted_class: str,
         }
 
     if confidence < min_confidence or norm_pred == "UNCERTAIN":
+        conf_pct = round(confidence * 100)
+        if norm_pred not in ["NONE", "NO_HAND", "UNCERTAIN"]:
+            msg = f"Unable to confidently identify the performed sign. The model currently detects {norm_pred} with {conf_pct}% confidence. Please position your hand clearly and try again."
+        else:
+            msg = f"Unable to confidently identify the performed sign ({conf_pct}% confidence). Please position your hand clearly and try again."
         return {
             "correct": False,
             "status": "UNCERTAIN",
-            "message": "I couldn't confidently recognize the sign. Please position your hand clearly and try again."
+            "message": msg
         }
 
     if not norm_target:
@@ -85,13 +90,13 @@ def compute_generic_assessment(target_sign: Optional[str], predicted_class: str,
         return {
             "correct": True,
             "status": "CORRECT",
-            "message": f"Correct! You performed sign {norm_target}."
+            "message": f"Correct. The model detected {norm_pred}, which matches the expected {norm_target} sign."
         }
     else:
         return {
             "correct": False,
             "status": "INCORRECT",
-            "message": f"Detected sign {norm_pred}. Please perform sign {norm_target}."
+            "message": f"Incorrect. The model detected {norm_pred}, while the expected sign was {norm_target}. Please adjust your hand position and try the {norm_target} sign again."
         }
 
 @router.post("/reset-stabilizer")

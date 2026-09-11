@@ -33,11 +33,11 @@ class FeedbackEngine:
             if msg:
                 return msg
 
-        # Default success or general adjustment advice
+        # Standardized genuine model comparison feedback
         if expected_sign.upper() == predicted_sign.upper():
-            return f"Great execution of sign '{expected_sign.upper()}'. Maintain thumb alignment for optimal joint contrast."
+            return f"Correct. The model detected {predicted_sign.upper()}, which matches the expected {expected_sign.upper()} sign."
         
-        return f"Sign '{expected_sign.upper()}' misclassified as '{predicted_sign.upper()}'. Try adjusting your finger position and hold steady."
+        return f"Incorrect. The model detected {predicted_sign.upper()}, while the expected sign was {expected_sign.upper()}. Please adjust your hand position and try the {expected_sign.upper()} sign again."
 
 # Global Feedback Engine Singleton
 feedback_engine = FeedbackEngine()
