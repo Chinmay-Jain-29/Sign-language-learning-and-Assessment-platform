@@ -37,7 +37,7 @@ class TestGenericClassAssessment(unittest.TestCase):
             self.assertEqual(assessment["status"], "CORRECT")
             self.assertEqual(
                 assessment["message"],
-                f"Correct! You performed sign {char}.",
+                f"Correct. The model detected {char}, which matches the expected {char} sign.",
                 f"Incorrect success message for class '{char}'"
             )
 
@@ -55,7 +55,7 @@ class TestGenericClassAssessment(unittest.TestCase):
             self.assertEqual(assessment["status"], "INCORRECT")
             self.assertEqual(
                 assessment["message"],
-                f"Detected sign {pred_char}. Please perform sign {target_char}."
+                f"Incorrect. The model detected {pred_char}, while the expected sign was {target_char}. Please adjust your hand position and try the {target_char} sign again."
             )
 
     def test_cross_class_mismatches(self):
@@ -83,7 +83,7 @@ class TestGenericClassAssessment(unittest.TestCase):
             self.assertEqual(assessment["status"], "INCORRECT")
             self.assertEqual(
                 assessment["message"],
-                f"Detected sign {pred}. Please perform sign {target}."
+                f"Incorrect. The model detected {pred}, while the expected sign was {target}. Please adjust your hand position and try the {target} sign again."
             )
 
     def test_low_confidence_uncertainty_all_classes(self):
@@ -99,7 +99,7 @@ class TestGenericClassAssessment(unittest.TestCase):
             self.assertEqual(assessment["status"], "UNCERTAIN")
             self.assertEqual(
                 assessment["message"],
-                "I couldn't confidently recognize the sign. Please position your hand clearly and try again."
+                f"Unable to confidently identify the performed sign. The model currently detects {char} with 45% confidence. Please position your hand clearly and try again."
             )
 
     def test_case_insensitivity_and_whitespace_normalization(self):
@@ -111,7 +111,7 @@ class TestGenericClassAssessment(unittest.TestCase):
         )
         self.assertTrue(assessment["correct"])
         self.assertEqual(assessment["status"], "CORRECT")
-        self.assertEqual(assessment["message"], "Correct! You performed sign B.")
+        self.assertEqual(assessment["message"], "Correct. The model detected B, which matches the expected B sign.")
 
     def test_real_model_inference_endpoint_all_26_classes(self):
         """
@@ -136,7 +136,10 @@ class TestGenericClassAssessment(unittest.TestCase):
             self.assertEqual(res_mismatch.predicted_sign, char)
             self.assertFalse(res_mismatch.correct)
             self.assertEqual(res_mismatch.status, "INCORRECT")
-            self.assertEqual(res_mismatch.message, f"Detected sign {char}. Please perform sign {mismatch_target}.")
+            self.assertEqual(
+                res_mismatch.message,
+                f"Incorrect. The model detected {char}, while the expected sign was {mismatch_target}. Please adjust your hand position and try the {mismatch_target} sign again."
+            )
 
 if __name__ == "__main__":
     unittest.main()

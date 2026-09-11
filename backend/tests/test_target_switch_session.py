@@ -48,7 +48,7 @@ class TestTargetSwitchingWithoutRefresh(unittest.TestCase):
             self.assertEqual(res.predicted_sign, target)
             self.assertTrue(res.correct)
             self.assertEqual(res.status, "CORRECT")
-            self.assertEqual(res.message, f"Correct! You performed sign {target}.")
+            self.assertEqual(res.message, f"Correct. The model detected {target}, which matches the expected {target} sign.")
 
     def test_target_switch_with_mismatch_recovery(self):
         """
@@ -71,7 +71,7 @@ class TestTargetSwitchingWithoutRefresh(unittest.TestCase):
         self.assertFalse(res2.correct)
         self.assertEqual(res2.status, "INCORRECT")
         self.assertEqual(res2.predicted_sign, "A")
-        self.assertEqual(res2.message, "Detected sign A. Please perform sign B.")
+        self.assertEqual(res2.message, "Incorrect. The model detected A, while the expected sign was B. Please adjust your hand position and try the B sign again.")
 
         # Step 3: User corrects posture to gesture B
         lms_b = [LandmarkPointItem(**p) for p in get_canonical_landmarks_for_sign("B")]
