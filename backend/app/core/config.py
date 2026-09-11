@@ -24,7 +24,14 @@ class Settings(BaseSettings):
     AI_MODE: str = os.getenv("AI_MODE", "production")  # production | mock
     
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000", "http://localhost"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://localhost",
+        "http://localhost:10000",
+        "https://signlanguagelearningandassessmentpl.vercel.app"
+    ]
 
     # Server Network / Port Configuration
     HOST: str = os.getenv("HOST", "0.0.0.0")
